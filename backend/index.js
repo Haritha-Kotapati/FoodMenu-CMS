@@ -11,19 +11,11 @@ mongoDB();
 app.use(bodyParser.json());
 
 //Use the CORS middleware to handle CORS headers
-// Allow requests from the Vercel site and other origins
-const allowedOrigins = ['https://food-menu-cms.vercel.app', 'http://localhost:3000'];
 
+// Allow requests from 'https://food-menu-cms.vercel.app'
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-
+    origin: 'https://food-menu-cms.vercel.app',
+  };
 app.use(cors(corsOptions));
 
 
