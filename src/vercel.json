@@ -7,9 +7,11 @@
         }
     ],
     "routes": [
-        {
-            "src": "(/.*)",
-            "dest":"/"
-        }
+        {"handle":"filesystem"},
+        {"src": "/api/fooddata", "dest": "/api/fooddata.js"},
+        { "src": "/api/loginuser", "dest": "/api/loginuser.js" },
+        { "src": "/api/createuser", "dest": "/api/createuser.js" },
+        
+        { "src": "(/.*)", "dest": "/index.js" }
     ]
 }
