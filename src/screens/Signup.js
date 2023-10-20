@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link , useHistory  } from 'react-router-dom'
 
 export default function Signup() {
     const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation: "" })
+
+    // Use useHistory hook
+//    const history = useHistory();
 
     const handleSubmit = async (e) => {
 
@@ -12,14 +15,20 @@ export default function Signup() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
+            body: JSON.stringify({ 
+                name: credentials.name, 
+                email: credentials.email, 
+                password: credentials.password, 
+                location: credentials.geolocation 
+            })
         });
         const json = await response.json()
         console.log(json)
 
         if (json.success) {
-            console.log(json);
-            alert("User registered Successfully!")
+          //  console.log(json);
+        //  history.push('/aftersignup');
+             alert("User registered Successfully!")
         } else{
             alert("Enter valid credentials.")
         }
@@ -47,7 +56,7 @@ export default function Signup() {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
-                        <input type="text" className="form-control" name='geolocation' value={credentials.geolocation} onChange={onChange} id="exampleInputPassword1" />
+                        <input type="text" className="form-control" name='geolocation' value={credentials.geolocation} onChange={onChange} id="exampleInputgeolocation" />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                     <Link to="/login" className='m-3 btn btn-danger'>Already a user? Login</Link>

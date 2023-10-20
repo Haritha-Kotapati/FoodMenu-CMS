@@ -2,10 +2,13 @@ const express = require('express')
 const app = express()
 const port = 4000
 const mongoDB = require("./db")
+const bodyParser = require("body-parser");
 const cors = require('cors');
 
 // Connect to MongoDB using the imported function
 mongoDB();
+
+app.use(bodyParser.json());
 
 //Use the CORS middleware to handle CORS headers
 app.use(cors());

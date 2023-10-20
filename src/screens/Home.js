@@ -1,26 +1,30 @@
-import React from "react";
-import Navbar from "../components/Navbar";
+import React, { useState } from "react";
+// import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Carousal from "../components/Carousal";
 import Menu from "../components/Menu";
+import UserProfile from "../components/UserProfile";
 
 export default function Home() {
-    
+    const [user, setUser] = useState(null); // Set the user state when the user is logged in
 
     return (
         <div>
-            <div><Navbar /></div>
-            <div><Menu/></div>
-            
-            <div><Carousal /></div>
-            
-            <div className="m-6">
-                <Card />
-                <Card />
-                <Card />
-            </div>
-            <div><Footer /></div>
+
+            {/* <Navbar /> */}
+            <Menu />
+            {user ? (
+                <UserProfile user={user} /> // Render UserProfile if the user is logged in
+            ) : (
+                /* Render other content when the user is not logged in */
+                <>
+                    <Carousal />
+                    <Card />
+                    <Card />
+                </>
+            )}
+            <Footer />
         </div>
     )
 }

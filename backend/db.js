@@ -12,7 +12,7 @@ const connectToDB = async () => {
         });
         console.log("Connectd to MongoDB");
 
-        const fetched_data = await mongoose.connection.db.collection("Sample");
+        const fetched_data = await mongoose.connection.db.collection("FoodMenu");
         //const data = await collection.find({}).toArray();
         
         fetched_data.find({}).toArray(async function(err, data){
@@ -20,22 +20,15 @@ const connectToDB = async () => {
             foodCategory.find({}).toArray(function (err,catData){
                 if(err) console.log(err);
                 else{
-                     global.Sample = data;
+                     global.FoodMenu = data;
                      global.FoodCategory = catData;
-                     console.log("Menu items: "+ data);
-                     console.log("Menu categories: ");
-                     console.log(catData);
+                     console.log(data);
                 }
             })
-           // if(err) console.log(err)
-            //else{
-                // global.Sample = data;
-                // console.log(global.Sample)
-           // }
        });
         
-       console.log('Data from the "FoodCategory" collection:');
-       //console.log(data);
+    //   console.log('Data from the "FoodCategory" collection:');
+    //    console.log(data);
 
     } catch (error) {
         console.error('Error connecting to MongoDB: ', error);

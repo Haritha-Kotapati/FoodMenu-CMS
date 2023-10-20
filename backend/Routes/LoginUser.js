@@ -32,10 +32,10 @@ router.post(
             //Compare the provided password with th hashed password
             const passwordMatch = await bcrypt.compare(password, user.password);
             console.log(passwordMatch);
-            if (passwordMatch) {
-                return res.json({ success: true },console.log('User logged in successfully'));
 
-                ;
+            if (passwordMatch) {
+                console.log('User logged in successfully')
+                return res.json({ success: true });
             } else {
                 return res.status(400).json({ success: false, errors: "Try logging in with correct credentials" });
             }

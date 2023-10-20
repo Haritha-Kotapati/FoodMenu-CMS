@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
+
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 
@@ -19,19 +20,12 @@ router.post(
         }
 
         try {
-            const hashedPassword = await bcrypt.hash(req.body.password, 10, (err, hash) => {
-                if (err) {
-                    console.error(err); //Handle the error
-                } else {
-                    //'hash' contains the securely hashed password
-                    console.log('Hashed Password:', hash);
-                    // Save 'hash' in your database or use it as needed
-                }
-            }) //Hash the password
+            //Hash the password
+           // const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
             const user = new User({
                 name: req.body.name,
-                password: hashedPassword,
+                password: await bcrypt.hash(req.body.password, 10), //store the hashed password
                 email: req.body.email,
                 location: req.body.location
             });

@@ -13,7 +13,10 @@ export default function Login() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: credentials.email, password: credentials.password })
+            body: JSON.stringify({ 
+                email: credentials.email, 
+                password: credentials.password 
+            })
         });
 
         console.log("URL:", "http://localhost:4000/api/loginuser");
