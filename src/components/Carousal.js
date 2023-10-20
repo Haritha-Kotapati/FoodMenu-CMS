@@ -11,7 +11,7 @@ export default function Carousal() {
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success text-white bg-success" type="submit">Search</button>
                         </form>
-                        <h1>Welcome to TastyFoods. Find your favourite!</h1>+++++++++++-+
+                        <h1>Welcome to TastyFoods. Find your favourite dishes!</h1>+++++++++++-+
                         <div className="carousel-item active">
                             <img src="https://source.unsplash.com/random/900×700/?fruit" className="d-block w-100" style={{ filter: "brightness(40%)" }} alt="..." />
                         </div>
